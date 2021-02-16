@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: poppins, sans-serif;
+}
+
+/*HEADER ============================*/
+
+header{
+    background:  conic-gradient(from 180deg, #20B1D1, #462496, #FF000F);
+}
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    padding: 1rem 10rem;
+}
+
+.navbar .navbar-button{
+    color: white;
+    text-decoration: none;
+}
