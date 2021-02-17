@@ -2,21 +2,127 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: poppins, sans-serif;
+}
+
+body{
+    background: #f0f2f5;
+    font-family:'Poppins', sans-serif;
 }
 
 /*HEADER ============================*/
 
 header{
     background:  conic-gradient(from 180deg, #20B1D1, #462496, #FF000F);
+    margin-bottom: 30px;
 }
 .navbar{
     display: flex;
     justify-content: space-around;
-    padding: 1rem 10rem;
+    padding: 1rem 8rem 1.5rem 8rem;
 }
 
 .navbar .navbar-button{
-    color: white;
+    color: rgba(255, 255, 255, 0.6);
     text-decoration: none;
+    font-weight: 200;
+}
+.navbar .navbar-button:hover{
+    color: rgba(255, 255, 255, 1);
+}
+header .stats-container{
+    display: flex;
+    justify-content: space-around;
+    padding: 0 5rem 0 5rem;
+    color: white;
+}
+@media (max-width: 768px){
+    header .stats-container{
+        justify-content: space-between;
+        padding: 0 3rem 0 3rem;
+    }
+    .navbar{
+        padding: 1rem 3rem 1.5rem 3rem;
+    }
+}
+.stats-container .stats-title{
+    font-size: small;
+    font-weight: 200;
+    opacity: .8;
+}
+.stats-container .stats-kcal{
+    font-size: xx-large;
+    font-weight: 800;
+    line-height: 80%;
+    margin-left: -20px;
+}
+.calendar{
+    display: flex;
+    justify-content: center;
+}
+.calendar .date{
+    width: 160px;
+    height: 160px;
+    margin-top: -130px;
+    text-align: center;
+    background: white;
+    border-radius: 40rem;
+    font-size: large;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+}
+.calendar .date p:nth-child(2){
+    font-size: 96px;
+    line-height: 80%;
+    font-weight: 700;
+}
+.new-day-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+button.new-day{
+    width: 60px;
+    height: 60px;
+    margin-top: -15px;
+    margin-bottom: -20px;
+    border-radius: 50%;
+    border: none;
+    background: white;
+    font-size: 3rem;
+    font-weight: 700;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+
+/*Main ===========================================*/
+main{
+    padding: 0 3rem 0 3rem;
+}
+table{
+    width: 100%;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+/*Footer =========================================*/
+
+footer{
+    position: fixed;
+    padding: 1rem;
+    background-color: #472395;
+    color: white;
+    text-align: center;
+    font-weight: 200;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+}
+footer p:nth-child(2){
+    font-size: x-small;
+}
+footer p:nth-child(1){
+    letter-spacing: 6px;
 }
