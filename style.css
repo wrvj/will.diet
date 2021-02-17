@@ -103,7 +103,21 @@ main{
 }
 table{
     width: 100%;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);  
+    border-radius: .5rem;  
+}
+table, td, th{
+    text-align: left;
+    padding: .4rem;
+}
+table th:last-child, 
+table th:first-child,
+table th:nth-child(3){
+    width: 60px;
+}
+input{
+    width: 100%;
+    font-size: large;
 }
 
 /*Footer =========================================*/
