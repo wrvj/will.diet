@@ -65,6 +65,7 @@ header .stats-container{
     margin-top: -130px;
     text-align: center;
     background: white;
+    color:#462496;
     border-radius: 40rem;
     font-size: large;
     font-weight: 500;
@@ -91,6 +92,7 @@ button.new-day{
     border-radius: 50%;
     border: none;
     background: white;
+    color: #20B1D1;
     font-size: 3rem;
     font-weight: 700;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
@@ -101,29 +103,55 @@ button.new-day{
 main{
     padding: 0 3rem 0 3rem;
 }
+
 table{
     width: 100%;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);  
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);  
     border-radius: .5rem;  
+    border-spacing: 0;
+    overflow: hidden;
 }
-table, td, th{
-    text-align: left;
-    padding: .4rem;
+table thead th{
+    background: #2B89C0;
+    padding: .5rem 0 .5rem 0;
+}
+td, th{
+    text-align: center;
 }
 table th:last-child, 
 table th:first-child,
 table th:nth-child(3){
     width: 60px;
 }
-input{
+td:nth-child(2){
+    text-align: left;
+}
+
+input, table p{
     width: 100%;
     font-size: large;
+    border: 0;
+    padding: .7rem;
+    background: rgba(0, 0, 0, 0.0);
+}
+input:focus{
+    outline: none;
+}
+th input::placeholder{
+    color: white;
+    font-weight: 600;
+}
+table button{
+    border: 0px;
+    font-size: large;
+    border-radius: 50%;
+    outline: none;
 }
 
 /*Footer =========================================*/
 
 footer{
-    position: fixed;
+    position: relative;
     padding: 1rem;
     background-color: #472395;
     color: white;
@@ -132,6 +160,7 @@ footer{
     bottom: 0px;
     left: 0px;
     right: 0px;
+    margin-top: 2rem;
     margin-bottom: 0px;
 }
 footer p:nth-child(2){
