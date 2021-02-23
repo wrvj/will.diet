@@ -3,9 +3,42 @@
     padding: 0;
     box-sizing: border-box;
 }
+:root{
+
+    /* Theme colors */
+    --medium-gray: #363636;
+    --dark-gray: #1d1d1d;
+    --light-gray: #AAAAAA;
+    --main-blue: #39C5E7;
+
+    /* Main page padding */
+    --page-main-padding: 1rem;
+
+    /* Food table config */
+    --table-font-size: 14px;
+    --table-font-weight: 200;
+    --table-font-color: var(--light-gray);
+}
+@media screen and (min-width: 600px){
+    :root{
+        --page-main-padding: 4rem;
+    }
+}
+@media screen and (min-width: 768px){
+    :root{
+        --page-main-padding: 8rem;
+    }
+}
+@media screen and (min-width: 1024px){
+    :root{
+        --page-main-padding: 14rem;
+    }
+}
+
+
 
 body{
-    background: #f0f2f5;
+    background: var(--medium-gray);
     font-family:'Poppins', sans-serif;
 }
 
@@ -13,12 +46,17 @@ body{
 
 header{
     background:  conic-gradient(from 180deg, #20B1D1, #462496, #FF000F);
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);  
 }
 .navbar{
     display: flex;
     justify-content: space-around;
-    padding: 1rem 8rem 1.5rem 8rem;
+    align-items: center;
+    margin-bottom: 35px;
+    padding: 1rem var(--page-main-padding);
+    background-color: var(--dark-gray);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);  
 }
 
 .navbar .navbar-button{
@@ -28,22 +66,15 @@ header{
 }
 .navbar .navbar-button:hover{
     color: rgba(255, 255, 255, 1);
+    font-weight: 300;
 }
 header .stats-container{
     display: flex;
-    justify-content: space-around;
-    padding: 0 5rem 0 5rem;
+    justify-content: space-between;
+    padding: 0 var(--page-main-padding);
     color: white;
 }
-@media (max-width: 768px){
-    header .stats-container{
-        justify-content: space-between;
-        padding: 0 3rem 0 3rem;
-    }
-    .navbar{
-        padding: 1rem 3rem 1.5rem 3rem;
-    }
-}
+
 .stats-container .stats-title{
     font-size: small;
     font-weight: 200;
@@ -101,49 +132,58 @@ button.new-day{
 
 /*Main ===========================================*/
 main{
-    padding: 0 3rem 0 3rem;
+    padding: 0 var(--page-main-padding);
+}
+.daily-plan-title{
+    width: 100%;
+    padding: 1rem 0;
+    color: var(--light-gray);
+    font-size: var(--table-font-size);
+    font-weight: var(--table-font-weight);
+}
+
+.food-table-container {
+    background-color: var(--dark-gray);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);  
+    border-radius: .5rem; 
+    font-size: var(--table-font-size);
+    font-weight: var(--table-font-weight);
+    overflow: hidden;
+    border: 1px solid var(--medium-gray);
+    
+}
+.add-new-food-btn {
+    color: var(--main-blue);    
+    padding: 1rem;
+    text-align: center;
+}
+.add-new-food-btn:hover{
+    background-color: rgba(255, 255, 255, 0.02);
+    font-weight: 300;
 }
 
 table{
+    color: var(--table-font-color);
     width: 100%;
-    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);  
-    border-radius: .5rem;  
     border-spacing: 0;
-    overflow: hidden;
-}
-table thead th{
-    background: #2B89C0;
-    padding: .5rem 0 .5rem 0;
-}
-td, th{
     text-align: center;
 }
-table th:last-child, 
-table th:first-child,
-table th:nth-child(3){
-    width: 60px;
-}
-td:nth-child(2){
+table td:nth-child(2){
     text-align: left;
 }
+table td:last-child, 
+table td:first-child,
+table td:nth-child(3){
+    width: 75px;
 
-input, table p{
-    width: 100%;
-    font-size: large;
-    border: 0;
-    padding: .7rem;
-    background: rgba(0, 0, 0, 0.0);
 }
-input:focus{
-    outline: none;
-}
-th input::placeholder{
-    color: white;
-    font-weight: 600;
+
+.food-table-container table td{
+    padding: 1rem 1rem;
+    border-top: 1px solid var(--medium-gray);
 }
 table button{
     border: 0px;
-    font-size: large;
     border-radius: 50%;
     outline: none;
 }
@@ -153,7 +193,7 @@ table button{
 footer{
     position: relative;
     padding: 1rem;
-    background-color: #472395;
+    background-color: var(--dark-gray);
     color: white;
     text-align: center;
     font-weight: 200;
@@ -162,6 +202,7 @@ footer{
     right: 0px;
     margin-top: 2rem;
     margin-bottom: 0px;
+    box-shadow: 0px -4px 4px rgba(0, 0, 0, 0.2);  
 }
 footer p:nth-child(2){
     font-size: x-small;
