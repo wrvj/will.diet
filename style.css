@@ -8,7 +8,8 @@
     /* Theme colors */
     --medium-gray: #363636;
     --dark-gray: #1d1d1d;
-    --light-gray: #AAAAAA;
+    --dark-gray-translucent: rgba(29, 29, 29, 0.97);
+    --light-gray: #d6d6d6;
     --main-blue: #39C5E7;
     --cold-white: #ecfbff;
 
@@ -19,7 +20,28 @@
     --table-font-size: 14px;
     --table-font-weight: 200;
     --table-font-color: var(--light-gray);
+    --filter-icons-table: invert(87%) sepia(21%) saturate(0%) hue-rotate(156deg) brightness(50%) contrast(96%);
+    --filter-icons-table-hover: invert(87%) sepia(21%) saturate(0%) hue-rotate(156deg) brightness(70%) contrast(96%);
 }
+/* Scroll bar ======================= */
+
+body::-webkit-scrollbar {
+    width: 12px;               /* width of the entire scrollbar */
+  }
+  
+  body::-webkit-scrollbar-track {
+    background: rgb(39, 39, 39);        /* color of the tracking area */
+  }
+  
+  body::-webkit-scrollbar-thumb {
+    background-color: rgb(56, 56, 56);    /* color of the scroll thumb */
+    border-radius: 4px;
+  }
+
+
+
+
+
 @media screen and (min-width: 600px){
     :root{
         --page-main-padding: 4rem;
@@ -150,7 +172,8 @@ main{
 }
 
 .food-table-container {
-    background-color: var(--dark-gray);
+    background-color: var(--dark-gray-translucent);
+    backdrop-filter: blur(6px);
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);  
     border-radius: .5rem; 
     font-size: var(--table-font-size);
@@ -172,6 +195,9 @@ main{
     cursor: pointer;
     font-weight: 300;
 }
+.food-table-new-item{
+    height: 300px;
+}
 
 table{
     color: var(--table-font-color);
@@ -187,6 +213,48 @@ table td:first-child,
 table td:nth-child(3){
     width: 75px;
 
+}
+.icons-container{
+    display: flex;
+    justify-content: space-between;
+    width: 110px;
+}
+.icons-container .icon{
+    display: inline-block;
+    filter: var(--filter-icons-table);
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+}
+.icons-container .icon:hover{
+    filter: var(--filter-icons-table-hover);
+}
+.checkbox-container{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.checkbox-container .icon{
+    display: inline-block;
+    filter: var(--filter-icons-table);
+    width: 20px;
+    height: 20px;
+    background-size: cover;
+}
+.icon-protein{
+    background-image: url(./img/protein_icon_1.svg);
+}
+.icon-carbs{
+    background-image: url(./img/carbs_icon_1.svg);
+}
+.icon-fats{
+    background-image: url(./img/fats_icon_1.svg);
+}
+.icon-fibers{
+    background-image: url(./img/fibers_icon_1.svg);
+}
+.icon-check{
+    background-image: url(./img/check_icon.svg);
 }
 
 .food-table-container table td{
@@ -204,7 +272,8 @@ table button{
 footer{
     position: relative;
     padding: 1rem;
-    background-color: var(--dark-gray);
+    background-color: var(--dark-gray-translucent);
+    backdrop-filter: blur(6px);
     color: white;
     text-align: center;
     font-weight: 200;
