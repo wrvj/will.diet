@@ -17,11 +17,14 @@
 <body>
     <header>
         <div class="navbar">
-            <a class="navbar-button" href="#">Home</a>
-            <a class="navbar-button" href="#">About</a>
-            <a class="navbar-button" href="#">Settings</a>
-            <a class="navbar-button" href="#">Statistics</a>
-            <a class="navbar-button" href="#">Tutorial</a>
+            <div class="navbar-button-wraper">
+                <a class="navbar-button" href="#">Home</a>
+                <a class="navbar-button" href="#">About</a>
+                <a class="navbar-button" href="#">Settings</a>
+                <a class="navbar-button" href="#">Statistics</a>
+                <a class="navbar-button" href="#">Tutorial</a>
+            </div>
+            
         </div>
         <div class="stats-container">
             <div class="goal">
@@ -62,8 +65,44 @@
     <main>
         <p class="daily-plan-title">Daily plan for Feb 10, 2021</p>
         <div class="food-table-container">
+            <p id="addNewItem" class="add-new-food-btn">+ Add new item</p>
             <div class="food-table-new-item">
-                <p class="add-new-food-btn">+ Add new item</p>
+                
+                <div id="addItemDialog" class="add-item-dialog add-item-dialog-collapsed">
+                    <div>
+                        <select name="" id="">
+                            <option value="">Rice</option>
+                            <option value="">Mashed Potatoes</option>
+                            <option value="">Chicken</option>
+                            <option value="">Beef</option>
+                            <option value="">White Fish</option>
+                            <option value="">Salmon</option>
+                            <option value="">Pasta</option>
+                            <option value="">Milk</option>
+                            <option value="">Orange Juice</option>
+                            <option value="">Grape Juice</option>
+                        </select>
+                    </div>
+                    <script>
+                        var showNewItem = false;
+                        document.getElementById("addNewItem").onclick = ()=>{
+                            
+                            console.log(showNewItem);
+                            if(showNewItem==false)
+                            {
+                                showNewItem=true;
+                                document.getElementById("addItemDialog").classList.remove('add-item-dialog-collapsed');
+                            }else{
+                                showNewItem=false;
+                                document.getElementById("addItemDialog").classList.add('add-item-dialog-collapsed');
+                            }
+                            console.log(showNewItem);
+                        }
+                    </script>
+                    
+                    <div><input type="text" placeholder="Weight(g)"></div>
+                    <div><input type="text" placeholder="Time"></div>
+                </div>
             </div>
             
             <table>
