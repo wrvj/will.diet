@@ -2,162 +2,143 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./style.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link
+		href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+		rel="stylesheet">
 
 
-    <title>Will.diet</title>
+	<title>Will.diet</title>
 </head>
 
 <body>
-    <header>
-        <div class="navbar">
-            <div class="navbar-button-wraper">
-                <a class="navbar-button" href="#">Home</a>
-                <a class="navbar-button" href="#">About</a>
-                <a class="navbar-button" href="#">Settings</a>
-                <a class="navbar-button" href="#">Statistics</a>
-                <a class="navbar-button" href="#">Tutorial</a>
-            </div>
-            
-        </div>
-        <div class="stats-container">
-            <div class="goal">
-                <p class="stats-title">Goal</p>
-                <p class="stats-kcal">0 Calories</p>
-                <p class="stats-protein">proteins 0g</p>
-                <p class="stats-carbs">carbs 0g</p>
-                <p class="stats-fats">fats 0g</p>
-                <p class="stats-fibers">fibers 0g</p>
-            </div>
-            <div class="accomplished">
-                <p class="stats-title">Accomplished</p>
-                <p class="stats-kcal">0 Calories</p>
-                <p class="stats-protein">proteins 0g</p>
-                <p class="stats-carbs">carbs 0g</p>
-                <p class="stats-fats">fats 0g</p>
-                <p class="stats-fibers">fibers 0g</p>
-            </div>
-        </div>
-        <div class="calendar">
-            <div>
-                <div class="date">
-                    <div>
-                        <p>feb</p>
-                        <p>10</p>
-                        <p>2020</p>
-                    </div>
-                </div>
-                <div class="new-day-container">
-                    <button class="new-day">
-                        +
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
+	<header>
+		<div class="navbar">
+			<div class="navbar-button-wraper">
+				<a class="navbar-button" href="#">Home</a>
+				<a class="navbar-button" href="#">About</a>
+				<a class="navbar-button" href="#">Settings</a>
+				<a class="navbar-button" href="#">Statistics</a>
+				<a class="navbar-button" href="#">Tutorial</a>
+			</div>
 
-    <main>
-        <p class="daily-plan-title">Daily plan for Feb 10, 2021</p>
-        <div class="food-table-container">
-            <p id="addNewItem" class="add-new-food-btn">+ Add new item</p>
-            <div class="food-table-new-item">
-                
-                <div id="addItemDialog" class="add-item-dialog add-item-dialog-collapsed">
-                    <div>
-                        <select name="" id="">
-                            <option value="">Rice</option>
-                            <option value="">Mashed Potatoes</option>
-                            <option value="">Chicken</option>
-                            <option value="">Beef</option>
-                            <option value="">White Fish</option>
-                            <option value="">Salmon</option>
-                            <option value="">Pasta</option>
-                            <option value="">Milk</option>
-                            <option value="">Orange Juice</option>
-                            <option value="">Grape Juice</option>
-                        </select>
-                    </div>
-                    <script>
-                        var showNewItem = false;
-                        document.getElementById("addNewItem").onclick = ()=>{
-                            
-                            console.log(showNewItem);
-                            if(showNewItem==false)
-                            {
-                                showNewItem=true;
-                                document.getElementById("addItemDialog").classList.remove('add-item-dialog-collapsed');
-                            }else{
-                                showNewItem=false;
-                                document.getElementById("addItemDialog").classList.add('add-item-dialog-collapsed');
-                            }
-                            console.log(showNewItem);
-                        }
-                    </script>
-                    
-                    <div><input type="text" placeholder="Weight(g)"></div>
-                    <div><input type="text" placeholder="Time"></div>
-                </div>
-            </div>
-            
-            <table>
-            
-                <tbody>
-                    <tr>
-                        <td><p>12h</p></td>
-                        <td><p>Mashed potatoes</p></td>
-                        
-                        <td><div class="icons-container">
-                            <span class="icon icon-protein"></span>
-                            <span class="icon icon-carbs"></span>
-                            <span class="icon icon-fats"></span>
-                            <span class="icon icon-fibers"></span>
-                        </div></td>
+		</div>
+		<div class="stats-container">
+			<div class="goal">
+				<p class="stats-title">Goal</p>
+				<p class="stats-kcal">0 Calories</p>
+				<p class="stats-protein">proteins 0g</p>
+				<p class="stats-carbs">carbs 0g</p>
+				<p class="stats-fats">fats 0g</p>
+				<p class="stats-fibers">fibers 0g</p>
+			</div>
+			<div class="accomplished">
+				<p class="stats-title">Accomplished</p>
+				<p class="stats-kcal">0 Calories</p>
+				<p class="stats-protein">proteins 0g</p>
+				<p class="stats-carbs">carbs 0g</p>
+				<p class="stats-fats">fats 0g</p>
+				<p class="stats-fibers">fibers 0g</p>
+			</div>
+		</div>
+		<div class="calendar">
+			<div>
+				<div class="date">
+					<div>
+						<p>feb</p>
+						<p>10</p>
+						<p>2020</p>
+					</div>
+				</div>
+				<div class="new-day-container">
+					<button class="new-day">
+						+
+					</button>
+				</div>
+			</div>
+		</div>
+	</header>
 
-                        <td><p>50g</p></td>
-                        <td><div class="checkbox-container"><span class="icon icon-check"></span></div></td>
-                    </tr>
-                    <tr>
-                        <td><p>12h</p></td>
-                        <td><p>Mashed potatoes</p></td>
+	<main>
+		<p class="daily-plan-title">Daily plan for Feb 10, 2021</p>
+		<div class="food-table-container">
+			<p id="addNewItemDialog" class="add-new-food-btn">+ Add new item</p>
+			<div class="food-table-new-item">
 
-                        <td><div class="icons-container">
-                            <span class="icon icon-protein"></span>
-                            <span class="icon icon-carbs"></span>
-                            <span class="icon icon-fats"></span>
-                            <span class="icon icon-fibers"></span>
-                        </div></td>
+				<div id="addItemDialog" class="add-item-dialog add-item-dialog-collapsed">
 
-                        <td><p>50g</p></td>
-                        <td><div class="checkbox-container"><span class="icon icon-check"></span></div></td>
-                    </tr>
-                    <tr>
-                        <td><p>12h</p></td>
-                        <td><p>Mashed potatoes</p></td>
-                        <td><div class="icons-container">
-                            <span class="icon icon-protein"></span>
-                            <span class="icon icon-carbs"></span>
-                            <span class="icon icon-fats"></span>
-                            <span class="icon icon-fibers"></span>
-                        </div></td>
-                        <td><p>50g</p></td>
-                        <td><div class="checkbox-container"><span class="icon icon-check"></span></div></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        
-    </main>
+					<div>
+						<select name="" id="">
+							<option value="">Rice</option>
+							<option value="">Mashed Potatoes</option>
+							<option value="">Chicken</option>
+							<option value="">Beef</option>
+							<option value="">White Fish</option>
+							<option value="">Salmon</option>
+							<option value="">Pasta</option>
+							<option value="">Milk</option>
+							<option value="">Orange Juice</option>
+							<option value="">Grape Juice</option>
+						</select>
+					</div>
+					<div class="input-with-icon">
+						<input type="text" placeholder="Weight">
+						<div class="input-icon weight-icon"></div>
+					</div>
+					<div class="input-with-icon">
+						<input type="text" placeholder="Time">
+						<div class="input-icon time-icon"></div>
+					</div>
+				</div>
+			</div>
 
-    <footer>
-        <p>will.diet</p>
-        <p>All rights reserved, 2020.</p>
-    </footer>
+			<table>
+
+				<tbody>
+					
+
+				</tbody>
+			</table>
+		</div>
+
+	</main>
+
+	<footer>
+		<p>will.diet</p>
+		<p>All rights reserved, 2020.</p>
+	</footer>
+
+	<script src="./scripts.js"></script>
+
+	<template>
+		<tr>
+			<td>
+				<p class="table-item-hour">12h</p>
+			</td>
+			<td>
+				<p class="table-item-name">Mashed potatoes</p>
+			</td>
+
+			<td>
+				<div class="icons-container">
+					<span class="icon icon-protein"></span>
+					<span class="icon icon-carbs"></span>
+					<span class="icon icon-fats"></span>
+					<span class="icon icon-fibers"></span>
+				</div>
+			</td>
+
+			<td>
+				<p class="table-item-weight">50g</p>
+			</td>
+			<td>
+				<div class="checkbox-container"><span class="icon icon-check"></span></div>
+			</td>
+		</tr>
+	</template>
 
 </body>
 
