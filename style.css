@@ -69,7 +69,7 @@ body::-webkit-scrollbar {
 
 body{
     background: var(--medium-gray);
-    background-image: url("./img/background_4.jpg");
+    background-image: url("./img/background_3.jpg");
     background-size: cover;
     background-position-x: center;
     font-family:'Poppins', sans-serif;

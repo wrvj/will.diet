@@ -1,13 +1,8 @@
-var showNewItem = false;
-document.getElementById("addNewItemDialog").onclick = () => {
-  console.log(showNewItem);
-  if (showNewItem == false) {
-    showNewItem = true;
-    document.getElementById("addItemDialog").classList.remove('add-item-dialog-collapsed');
-  } else {
-    showNewItem = false;
-    document.getElementById("addItemDialog").classList.add('add-item-dialog-collapsed');
-  }
+
+console.log(defaultFoods);
+for (let [foodName, props] of Object.entries(defaultFoods)){
+  console.log(foodName, props);
+
 }
 
 class FoodItem {
@@ -18,6 +13,11 @@ class FoodItem {
     this.weight = weight;
     this.hour = hour;
     this.status = "planned";
+    this.proteins = 0;
+    this.carbs = 0;
+    this.fats = 0;
+    this.fibers = 0;
+    this.calories = 0;
 
     this.setHour = function (newHour) {
       this.hour = newHour;
@@ -37,6 +37,25 @@ class FoodItem {
     this.toggleStatus = function () {
       this.status = (this.status == "planned") ? "eaten" : "planned";
     };
+    this.setNutrients = function (proteins, carbs, fats, fibers, calories, serving) {
+      if (isNaN(serving)) {
+        serving = 1;
+      }
+      this.proteins = proteins / serving;
+      this.carbs = carbs / serving;
+      this.fats = fats / serving;
+      this.fibers = fibers / serving;
+      this.calories = calories / serving;
+    };
+    this.getNutrientsByServing = function (serving) {
+      return {
+        proteins: this.proteins * serving,
+        carbs: this.carbs * serving,
+        fats: this.fats * serving,
+        fibers: this.fibers * serving,
+        calories: this.calories * serving
+      };
+    };
   }
   static incrementId() {
     if (!this.latestId) this.latestId = 1;
@@ -45,13 +64,14 @@ class FoodItem {
   };
 }
 
-class FoodItemTable {
+class FoodTable {
 
   constructor(planDate) {
     this.foodQtd = 0;
     this.foodItems = [];
     this.planDate = planDate;
     this.tableOrder = {};
+    this.tableTotalNutrients = { proteins: 0, carbs: 0, fats: 0, fibers: 0, calories: 0 };
 
     this.addFoodItem = function (foodItem) {
       this.foodItems.push(foodItem);
@@ -70,16 +90,23 @@ class FoodItemTable {
       }
     }
     this.addFoodItemToTable = function (foodItem) {
-      let rowTemplate = document.getElementsByTagName("template")[0];
-      let tableElement = document.getElementsByTagName("tbody")[0];
-      let clone = rowTemplate.content.cloneNode(true);
-      clone.querySelectorAll(".table-item-hour")[0].textContent = foodItem.hour + 'h';
-      clone.querySelectorAll(".table-item-name")[0].textContent = foodItem.name;
-      clone.querySelectorAll(".table-item-weight")[0].textContent = foodItem.weight + 'g';
-
-      tableElement.appendChild(clone.cloneNode(true));
+      this.addFoodItem(foodItem);
+      this.populateHtmlTable();
     }
-    this.populateTable = function () {
+    this.getTableNutrients = function (status) {
+      let nutrients = { proteins: 0, carbs: 0, fats: 0, fibers: 0, calories: 0 };
+      for (let food of this.foodItems) {
+        if (food.status == status) {
+          nutrients["proteins"] += food.getNutrientsByServing(food.weight)["proteins"];
+          nutrients["carbs"] += food.getNutrientsByServing(food.weight)["carbs"];
+          nutrients["fats"] += food.getNutrientsByServing(food.weight)["fats"];
+          nutrients["fibers"] += food.getNutrientsByServing(food.weight)["fibers"];
+          nutrients["calories"] += food.getNutrientsByServing(food.weight)["calories"];
+        }
+      }
+      return nutrients;
+    }
+    this.populateHtmlTable = function () {
       let rowTemplate = document.getElementsByTagName("template")[0];
       let tableElement = document.getElementsByTagName("tbody")[0];
       tableElement.innerHTML = "";
@@ -88,9 +115,9 @@ class FoodItemTable {
       console.log(clone.querySelectorAll("tr")[0]);
 
       for (let f of this.foodItems) {
-        clone.querySelectorAll(".table-item-hour")[0].textContent = f.hour;
+        clone.querySelectorAll(".table-item-hour")[0].textContent = f.hour + "h";
         clone.querySelectorAll(".table-item-name")[0].textContent = f.name;
-        clone.querySelectorAll(".table-item-weight")[0].textContent = f.weight;
+        clone.querySelectorAll(".table-item-weight")[0].textContent = f.weight + "g";
 
         tableElement.appendChild(clone.cloneNode(true));
       }
