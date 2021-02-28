@@ -69,7 +69,7 @@ body::-webkit-scrollbar {
 
 body{
     background: var(--medium-gray);
-    background-image: url("./img/background_3.jpg");
+    background-image: url("../img/background_3.jpg");
     background-size: cover;
     background-position-x: center;
     font-family:'Poppins', sans-serif;
@@ -269,11 +269,11 @@ main{
   background-position-y: center;
 }
 .input-icon.weight-icon{
-  background-image: url(./img/scale_icon_1.svg);
+  background-image: url(../img/scale_icon_1.svg);
   
 }
 .input-icon.time-icon{
-  background-image: url(./img/clock_icon_1.svg);
+  background-image: url(../img/clock_icon_1.svg);
 }
 
 table{
@@ -319,19 +319,19 @@ table td:nth-child(3){
     background-size: cover;
 }
 .icon-protein{
-    background-image: url(./img/protein_icon_1.svg);
+    background-image: url(../img/protein_icon_1.svg);
 }
 .icon-carbs{
-    background-image: url(./img/carbs_icon_1.svg);
+    background-image: url(../img/carbs_icon_1.svg);
 }
 .icon-fats{
-    background-image: url(./img/fats_icon_1.svg);
+    background-image: url(../img/fats_icon_1.svg);
 }
 .icon-fibers{
-    background-image: url(./img/fibers_icon_1.svg);
+    background-image: url(../img/fibers_icon_1.svg);
 }
 .icon-check{
-    background-image: url(./img/check_icon.svg);
+    background-image: url(../img/check_icon.svg);
 }
 
 .food-table-container table td{

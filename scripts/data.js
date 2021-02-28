@@ -1,8 +1,15 @@
-
-console.log(defaultFoods);
-for (let [foodName, props] of Object.entries(defaultFoods)){
-  console.log(foodName, props);
-
+const defaultFoods = {
+  0: { id: 0, name: "Pasta", proteins: 0.12, carbs: 0.72, fats: 0.015, fibers: 0.0, calories: 3.55 },
+  1: { id: 1, name: "Chicken Breast", proteins: 0.31, carbs: 0.0, fats: 0.036, fibers: 0.0, calories: 1.65 },
+  2: { id: 2, name: "Rice", proteins: 10, carbs: 20, fats: 10, fibers: 15, calories: 200 },
+  3: { id: 3, name: "Chicken", proteins: 10, carbs: 20, fats: 10, fibers: 15, calories: 200 },
+  4: { id: 4, name: "White Fish", proteins: 10, carbs: 20, fats: 10, fibers: 15, calories: 200 },
+  5: { id: 5, name: "Whole Milk", proteins: 10, carbs: 20, fats: 10, fibers: 15, calories: 200 },
+  6: { id: 6, name: "Beef", proteins: 10, carbs: 20, fats: 10, fibers: 15, calories: 200 },
+  7: { id: 7, name: "Bananas", proteins: 10, carbs: 20, fats: 10, fibers: 15, calories: 200 },
+  8: { id: 8, name: "Orange Juice", proteins: 10, carbs: 20, fats: 10, fibers: 15, calories: 200 },
+  9: { id: 9, name: "Grape Juice", proteins: 10, carbs: 20, fats: 10, fibers: 15, calories: 200 },
+  10: { id: 10, name: "Oatmeal", proteins: 10, carbs: 20, fats: 10, fibers: 15, calories: 200 }
 }
 
 class FoodItem {
@@ -20,7 +27,8 @@ class FoodItem {
     this.calories = 0;
 
     this.setHour = function (newHour) {
-      this.hour = newHour;
+      if (!isNaN(newHour))
+        this.hour = newHour;
     }
     this.setPlusAnHour = function () {
       this.hour = ((this.hour + 1) % 24);
@@ -29,7 +37,8 @@ class FoodItem {
       this.hour = ((this.hour + 23) % 24);
     }
     this.setWeight = function (newWeight) {
-      this.weight = newWeight;
+      if (!isNaN(newWeight))
+        this.weight = newWeight;
     };
     this.setStatus = function (newStatus) {
       this.status = newStatus;
@@ -92,11 +101,12 @@ class FoodTable {
     this.addFoodItemToTable = function (foodItem) {
       this.addFoodItem(foodItem);
       this.populateHtmlTable();
+      updateStats();
     }
     this.getTableNutrients = function (status) {
       let nutrients = { proteins: 0, carbs: 0, fats: 0, fibers: 0, calories: 0 };
       for (let food of this.foodItems) {
-        if (food.status == status) {
+        if (food.status == status || status == "all") {
           nutrients["proteins"] += food.getNutrientsByServing(food.weight)["proteins"];
           nutrients["carbs"] += food.getNutrientsByServing(food.weight)["carbs"];
           nutrients["fats"] += food.getNutrientsByServing(food.weight)["fats"];
