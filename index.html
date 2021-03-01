@@ -2,114 +2,116 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="./styles/style.css">
-	<link rel="preconnect" href="https://fonts.gstatic.com">
-	<link
-		href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-		rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
 
-	<title>Will.diet</title>
+    <title>Will.diet</title>
 </head>
 
 <body>
-	<header>
-		<div class="navbar">
-			<div class="navbar-button-wraper">
-				<a class="navbar-button" href="#">Home</a>
-				<a class="navbar-button" href="#">About</a>
-				<a class="navbar-button" href="#">Settings</a>
-				<a class="navbar-button" href="#">Statistics</a>
-				<a class="navbar-button" href="#">Tutorial</a>
-			</div>
+    <header>
+        <div class="navbar">
+            <div class="navbar-button-wraper">
+                <a class="navbar-button" href="#">Home</a>
+                <a class="navbar-button" href="#">About</a>
+                <a class="navbar-button" href="#">Settings</a>
+                <a class="navbar-button" href="#">Statistics</a>
+                <a class="navbar-button" href="#">Tutorial</a>
+            </div>
 
-		</div>
-		<div class="stats-container">
-			<div class="goal">
-				<p class="stats-title">Goal</p>
-				<p class="stats-kcal">0 Calories</p>
-				<p class="stats-proteins">proteins 0g</p>
-				<p class="stats-carbs">carbs 0g</p>
-				<p class="stats-fats">fats 0g</p>
-				<p class="stats-fibers">fibers 0g</p>
-			</div>
-			<div class="accomplished">
-				<p class="stats-title">Accomplished</p>
-				<p class="stats-kcal">0 Calories</p>
-				<p class="stats-proteins">proteins 0g</p>
-				<p class="stats-carbs">carbs 0g</p>
-				<p class="stats-fats">fats 0g</p>
-				<p class="stats-fibers">fibers 0g</p>
-			</div>
-		</div>
-		<div class="calendar">
-			<div>
-				<div class="date">
-					<div>
-						<p>feb</p>
-						<p>10</p>
-						<p>2020</p>
-					</div>
-				</div>
-				<div class="new-day-container">
-					<button class="new-day">
+        </div>
+        <div class="stats-container">
+            <div class="goal">
+                <p class="stats-title">Goal</p>
+                <p class="stats-kcal">0 Calories</p>
+                <p class="stats-proteins">proteins 0g</p>
+                <p class="stats-carbs">carbs 0g</p>
+                <p class="stats-fats">fats 0g</p>
+                <p class="stats-fibers">fibers 0g</p>
+            </div>
+            <div class="accomplished">
+                <p class="stats-title">Accomplished</p>
+                <p class="stats-kcal">0 Calories</p>
+                <p class="stats-proteins">proteins 0g</p>
+                <p class="stats-carbs">carbs 0g</p>
+                <p class="stats-fats">fats 0g</p>
+                <p class="stats-fibers">fibers 0g</p>
+            </div>
+        </div>
+        <div class="calendar">
+            <div>
+                <div class="date">
+                    <div>
+                        <p>feb</p>
+                        <p>10</p>
+                        <p>2020</p>
+                    </div>
+                </div>
+                <div class="new-day-container">
+                    <button class="new-day">
 						+
 					</button>
-				</div>
-			</div>
-		</div>
-	</header>
+                </div>
+            </div>
+        </div>
+    </header>
 
-	<main>
-		<p class="daily-plan-title">Daily plan for Feb 10, 2021</p>
-		<div class="food-table-container">
-			<p id="addNewItemDialog" class="add-new-food-btn">+ Add new item</p>
-			<div class="food-table-new-item">
+    <main>
+        <p class="daily-plan-title">Daily plan for Feb 10, 2021</p>
+        <input list="foodDatalist" name="browser" id="inputFood">
+        <div style="position: relative">Teste</div>>
+        <datalist id="foodDatalist"></datalist>
+        <div class="food-table-container">
+            <p id="addNewItemDialog" class="add-new-food-btn">+ Add new item</p>
+            <div class="food-table-new-item">
 
-				<div id="addItemDialog" class="add-item-dialog add-item-dialog-collapsed">
+                <div id="addItemDialog" class="add-item-dialog add-item-dialog-collapsed">
 
-					<div>
-						<select name="" id="newFoodSelect">
+                    <div>
+                        <select name="" id="newFoodSelect">
 						</select>
-					</div>
-					<div class="input-with-icon">
-						<input id="weightInput" type="text" placeholder="Weight">
-						<div class="input-icon weight-icon"></div>
-					</div>
-					<div class="input-with-icon">
-						<input id="hourInput" type="text" placeholder="Time">
-						<div class="input-icon time-icon"></div>
-					</div>
-				</div>
-			</div>
-			<p id="addItemToTableBtn" class="add-new-food-btn">Confirm</p>
+                    </div>
+                    <div class="input-with-icon">
+                        <input id="weightInput" type="text" placeholder="Weight">
+                        <div class="input-icon weight-icon"></div>
+                    </div>
+                    <div class="input-with-icon">
+                        <input id="hourInput" type="text" placeholder="Time">
+                        <div class="input-icon time-icon"></div>
+                    </div>
+                </div>
+            </div>
+            <p id="addItemToTableBtn" class="add-new-food-btn">Confirm</p>
 
-			<table>
+            <table>
 
-				<tbody>
-					
+                <tbody>
 
-				</tbody>
-			</table>
-		</div>
 
-	</main>
+                </tbody>
+            </table>
+        </div>
 
-	<footer>
-		<p>will.diet</p>
-		<p>All rights reserved, 2020.</p>
-	</footer>
+    </main>
 
-	
-	<script src="./scripts/data.js"></script>
-	<script src="./scripts/app.js"></script>
-	<script src="./scripts/ui.js"></script>
-	
-	
+    <footer>
+        <p>will.diet</p>
+        <p>All rights reserved, 2020.</p>
+    </footer>
 
-	<template>
+
+    <script src="./scripts/data.js"></script>
+    <script src="./scripts/app.js"></script>
+    <script src="./scripts/ui.js"></script>
+    <script src="./scripts/FDC_api.js"></script>
+
+
+
+    <template>
 		<tr>
 			<td>
 				<p class="table-item-hour">12h</p>
