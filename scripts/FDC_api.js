@@ -1,21 +1,22 @@
-const foodInput = document.querySelector('#inputFood');
-const foodDatalist = document.querySelector('#foodDatalist');
+// const foodInput = document.querySelector('#inputFood');
+// const foodDatalist = document.querySelector('#foodDatalist');
 
 
-var typingTimer;
-var doneTypingInterval = 1000;
-foodInput.addEventListener('keydown', function() {
-    clearTimeout(typingTimer);
-});
-foodInput.addEventListener('keyup', function() {
-    clearTimeout(typingTimer);
-    typingTimer = setTimeout(function() {
-        console.clear();
-        if (foodInput.value != '') {
-            searchFood(foodInput.value, 10);
-        }
-    }, doneTypingInterval);
-});
+// var typingTimer;
+// var doneTypingInterval = 1000;
+
+// foodInput.addEventListener('keydown', function() {
+//     clearTimeout(typingTimer);
+// });
+// foodInput.addEventListener('keyup', function() {
+//     clearTimeout(typingTimer);
+//     typingTimer = setTimeout(function() {
+//         console.clear();
+//         if (foodInput.value != '') {
+//             searchFood(foodInput.value, 10);
+//         }
+//     }, doneTypingInterval);
+// });
 
 
 loadFood(746760);
@@ -49,15 +50,61 @@ function showFood(data) {
 }
 
 function showFoods(foods) {
-    foodDatalist.innerHTML = '';
+    //foodDatalist.innerHTML = '';
     for (let food of foods) {
         let option = document.createElement('option');
-        //option.value = foodInput.value;
-        option.innerText = food.description;
-        foodDatalist.appendChild(option.cloneNode(true));
+        option.value = `${foodInput.value} - ${food.description}`;
+        //foodDatalist.appendChild(option.cloneNode(true));
         console.log(`${food.description} ${food.fdcId}`);
         //showNutrients(food);
     }
+}
+
+function loadFoodSugestions(name, qtd, custom_input, template) {
+    const apiKey = 'yOZhdNrJ112dXPBbwtS1ZJmhFEAqig0ie5aZNCVU';
+
+    fetch(`https://api.nal.usda.gov/fdc/v1/foods/search?query=${name}&api_key=${apiKey}&dataType=SR%20Legacy&pageSize=${qtd}`, {
+        headers: {
+            'accept': 'application/json'
+        }
+    }).then((res) => res.json().then((data) => {
+        const results = data.foods;
+        const listItems = [];
+        for (let food of results) {
+            showNutrients(food);
+            let newLIstItem = template.content.cloneNode(true);
+            console.log(food.description)
+
+            newLIstItem.querySelectorAll('.item-name')[0].innerText = food.description.split(/,(.+)/)[0];
+            newLIstItem.querySelectorAll('.item-description')[0].innerText = food.description.split(/,(.+)/)[1] ? (food.description.split(/,(.+)/)[1]) : '';
+            //203 protein, 205
+
+            for (let nutrient of food.foodNutrients) {
+                switch (nutrient.nutrientNumber) {
+                    case '208':
+                        newLIstItem.querySelectorAll('.sugestion-item-icons-container')[0].querySelectorAll('p')[0].innerText = nutrient.value;
+                        break;
+                    case '203':
+                        newLIstItem.querySelectorAll('.sugestion-item-icons-container')[0].querySelectorAll('p')[1].innerText = nutrient.value;
+                        break;
+                    case '205':
+                        newLIstItem.querySelectorAll('.sugestion-item-icons-container')[0].querySelectorAll('p')[2].innerText = nutrient.value;
+                        break;
+                    case '204':
+                        newLIstItem.querySelectorAll('.sugestion-item-icons-container')[0].querySelectorAll('p')[3].innerText = nutrient.value;
+                        break;
+                    case '291':
+                        newLIstItem.querySelectorAll('.sugestion-item-icons-container')[0].querySelectorAll('p')[4].innerText = nutrient.value;
+                        break;
+
+                }
+
+            }
+            listItems.push(newLIstItem.cloneNode(true));
+        }
+        custom_input.updateSugestionsListItems(listItems);
+    }));
+
 }
 
 function searchFood(name, qtd) {

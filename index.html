@@ -2,14 +2,14 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link rel="stylesheet" href="./styles/customInputStyle.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
 
-
-    <title>Will.diet</title>
+    <title>will.diet</title>
 </head>
 
 <body>
@@ -22,7 +22,6 @@
                 <a class="navbar-button" href="#">Statistics</a>
                 <a class="navbar-button" href="#">Tutorial</a>
             </div>
-
         </div>
         <div class="stats-container">
             <div class="goal">
@@ -52,9 +51,7 @@
                     </div>
                 </div>
                 <div class="new-day-container">
-                    <button class="new-day">
-						+
-					</button>
+                    <button class="new-day">+</button>
                 </div>
             </div>
         </div>
@@ -62,25 +59,24 @@
 
     <main>
         <p class="daily-plan-title">Daily plan for Feb 10, 2021</p>
-        <input list="foodDatalist" name="browser" id="inputFood">
-        <div style="position: relative">Teste</div>>
-        <datalist id="foodDatalist"></datalist>
         <div class="food-table-container">
             <p id="addNewItemDialog" class="add-new-food-btn">+ Add new item</p>
             <div class="food-table-new-item">
-
                 <div id="addItemDialog" class="add-item-dialog add-item-dialog-collapsed">
-
-                    <div>
-                        <select name="" id="newFoodSelect">
-						</select>
+                    <!-- <select name="" id="newFoodSelect"></select> -->
+                    <div class="custom-input-container">
+                        <input id="customInput" name="customInput" type="text" placeholder="Search for food" />
+                        <div id="sugestionsContainer" class="sugestions-container">
+                            <div class="list-item" style="display: none">Item 1</div>
+                        </div>
                     </div>
+
                     <div class="input-with-icon">
-                        <input id="weightInput" type="text" placeholder="Weight">
+                        <input id="weightInput" type="text" placeholder="Weight" />
                         <div class="input-icon weight-icon"></div>
                     </div>
                     <div class="input-with-icon">
-                        <input id="hourInput" type="text" placeholder="Time">
+                        <input id="hourInput" type="text" placeholder="Time" />
                         <div class="input-icon time-icon"></div>
                     </div>
                 </div>
@@ -88,14 +84,9 @@
             <p id="addItemToTableBtn" class="add-new-food-btn">Confirm</p>
 
             <table>
-
-                <tbody>
-
-
-                </tbody>
+                <tbody></tbody>
             </table>
         </div>
-
     </main>
 
     <footer>
@@ -103,41 +94,63 @@
         <p>All rights reserved, 2020.</p>
     </footer>
 
-
+    <script src="./CustomInputSearch.js"></script>
     <script src="./scripts/data.js"></script>
     <script src="./scripts/app.js"></script>
     <script src="./scripts/ui.js"></script>
     <script src="./scripts/FDC_api.js"></script>
 
+    <template id="foodTableItemTemplate">
+      <tr>
+        <td>
+          <p class="table-item-hour">12h</p>
+        </td>
+        <td>
+          <p class="table-item-name">Mashed potatoes</p>
+        </td>
 
+        <td>
+          <div class="icons-container">
+            <span class="icon icon-protein"></span>
+            <span class="icon icon-carbs"></span>
+            <span class="icon icon-fats"></span>
+            <span class="icon icon-fibers"></span>
+          </div>
+        </td>
 
-    <template>
-		<tr>
-			<td>
-				<p class="table-item-hour">12h</p>
-			</td>
-			<td>
-				<p class="table-item-name">Mashed potatoes</p>
-			</td>
+        <td>
+          <p class="table-item-weight">50g</p>
+        </td>
+        <td>
+          <div class="checkbox-container">
+            <span class="icon icon-check"></span>
+          </div>
+        </td>
+      </tr>
+    </template>
 
-			<td>
-				<div class="icons-container">
-					<span class="icon icon-protein"></span>
-					<span class="icon icon-carbs"></span>
-					<span class="icon icon-fats"></span>
-					<span class="icon icon-fibers"></span>
-				</div>
-			</td>
+    <template id="listItemTemplate">
+      <div class="sugestion-list-item">
+        <div style="display: flex">
+          <div class="item-name"></div>
+          <span style="display: flex; align-items: center; margin-right: .4rem; color: grey;">| </span>
+          <div class="item-description"></div>
+        </div>
 
-			<td>
-				<p class="table-item-weight">50g</p>
-			</td>
-			<td>
-				<div class="checkbox-container"><span class="icon icon-check"></span></div>
-			</td>
-		</tr>
-	</template>
-
+        <div class="sugestion-item-icons-container">
+          <span class="sugestion-item-icon calories"></span>
+          <p>500</p>
+          <span class="sugestion-item-icon protein"></span>
+          <p>1.0</p>
+          <span class="sugestion-item-icon carb"></span>
+          <p>0.5</p>
+          <span class="sugestion-item-icon fat"></span>
+          <p>2.1</p>
+          <span class="sugestion-item-icon fiber"></span>
+          <p>2.3</p>
+        </div>
+      </div>
+    </template>
 </body>
 
 </html>
