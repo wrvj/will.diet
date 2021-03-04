@@ -262,8 +262,7 @@ main {
 }
 
 #portionInput::after,
-#timeInput::after,
-.loading-icon {
+#timeInput::after {
     content: "";
     position: absolute;
     top: 0;
@@ -333,7 +332,19 @@ main {
 .loading-icon {
     opacity: 0;
     transform-origin: 50% 50%;
-    background-image: url(../img/reload_icon_1.svg);
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 9px;
+    width: 24px;
+    height: 100%;
+    padding: .2rem;
+    filter: var(--filter-icons-table);
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+    background-image: url(../img/reload_icon_3.svg);
     transition: opacity 0.4s ease;
 }
 
