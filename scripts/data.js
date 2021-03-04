@@ -14,10 +14,10 @@ const defaultFoods = {
 
 class FoodItem {
 
-    constructor(name, weight, hour) {
+    constructor(name, description, portion, hour) {
         this.foodItemId = FoodItem.incrementId();
         this.name = name;
-        this.weight = weight;
+        this.portion = portion;
         this.hour = hour;
         this.status = "planned";
         this.proteins = 0;
@@ -36,9 +36,9 @@ class FoodItem {
         this.setMinusAnHour = function() {
             this.hour = ((this.hour + 23) % 24);
         }
-        this.setWeight = function(newWeight) {
-            if (!isNaN(newWeight))
-                this.weight = newWeight;
+        this.setPortion = function(newportion) {
+            if (!isNaN(newportion))
+                this.portion = newportion;
         };
         this.setStatus = function(newStatus) {
             this.status = newStatus;
@@ -107,11 +107,11 @@ class FoodTable {
             let nutrients = { proteins: 0, carbs: 0, fats: 0, fibers: 0, calories: 0 };
             for (let food of this.foodItems) {
                 if (food.status == status || status == "all") {
-                    nutrients["proteins"] += food.getNutrientsByServing(food.weight)["proteins"];
-                    nutrients["carbs"] += food.getNutrientsByServing(food.weight)["carbs"];
-                    nutrients["fats"] += food.getNutrientsByServing(food.weight)["fats"];
-                    nutrients["fibers"] += food.getNutrientsByServing(food.weight)["fibers"];
-                    nutrients["calories"] += food.getNutrientsByServing(food.weight)["calories"];
+                    nutrients["proteins"] += food.getNutrientsByServing(food.portion)["proteins"];
+                    nutrients["carbs"] += food.getNutrientsByServing(food.portion)["carbs"];
+                    nutrients["fats"] += food.getNutrientsByServing(food.portion)["fats"];
+                    nutrients["fibers"] += food.getNutrientsByServing(food.portion)["fibers"];
+                    nutrients["calories"] += food.getNutrientsByServing(food.portion)["calories"];
                 }
             }
             return nutrients;
@@ -127,7 +127,7 @@ class FoodTable {
             for (let f of this.foodItems) {
                 clone.querySelectorAll(".table-item-hour")[0].textContent = f.hour + "h";
                 clone.querySelectorAll(".table-item-name")[0].textContent = f.name;
-                clone.querySelectorAll(".table-item-weight")[0].textContent = f.weight + "g";
+                clone.querySelectorAll(".table-item-weight")[0].textContent = f.portion + "g";
 
                 tableElement.appendChild(clone.cloneNode(true));
             }

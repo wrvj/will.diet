@@ -14,6 +14,7 @@ class CustomInputSerch {
         console.log("New Custom Input Created!" + this.input_element.value);
     }
     updateSugestionsListItems(newElements) {
+        document.querySelectorAll('.loading-icon')[0].classList.remove('show');
         this.sugestions_container.innerHTML = '';
         for (let newElement of newElements) {
             this.sugestions_container.appendChild(newElement);

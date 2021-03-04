@@ -1,21 +1,46 @@
-var showNewItem = false;
-document.getElementById("addNewItemDialog").onclick = () => {
-    console.log(showNewItem);
-    if (showNewItem == false) {
-        showNewItem = true;
-        document.getElementById("addItemDialog").classList.remove('add-item-dialog-collapsed');
-    } else {
-        showNewItem = false;
-        document.getElementById("addItemDialog").classList.add('add-item-dialog-collapsed');
+document.querySelector("#customInput").addEventListener('keydown', event => {
+    if (event.keyCode === 13) {
+        document.querySelector("#portionInput input").focus();
     }
+});
+document.querySelector("#portionInput input").addEventListener('keydown', event => {
+    if (event.keyCode === 13) {
+        document.querySelector("#timeInput input").focus();
+    }
+});
+document.querySelector("#timeInput input").addEventListener('keydown', event => {
+    if (event.keyCode === 13) {
+        document.querySelector("#addItemToTableBtn").click();
+        document.querySelector("#customInput").value = '';
+    }
+});
+
+
+
+try {
+    var showNewItem = false;
+    document.getElementById("addNewItemDialog").onclick = () => {
+        console.log(showNewItem);
+        if (showNewItem == false) {
+            showNewItem = true;
+            document.getElementById("addItemDialog").classList.remove('add-item-dialog-collapsed');
+        } else {
+            showNewItem = false;
+            document.getElementById("addItemDialog").classList.add('add-item-dialog-collapsed');
+        }
+    }
+} catch (error) {
+    console.log("Erro ao localizar o elemento! " + error);
 }
 
+
 document.querySelector("#addItemToTableBtn").onclick = () => {
-    const newFood = new FoodItem("newfood", 0, 0);
+    console.log("HEres");
+    const newFood = new FoodItem("newfood", " ", 0, 0);
     selectedFood = document.querySelector(".sugestion-list-item.focused");
     newFood.name = selectedFood.querySelectorAll('.item-name')[0].innerText;
-    newFood.setWeight(parseInt(document.querySelector("#weightInput").value));
-    newFood.setHour(parseInt(document.querySelector("#hourInput").value));
+    newFood.setPortion(parseInt(document.querySelector("#portionInput input").value));
+    newFood.setHour(parseInt(document.querySelector("#timeInput input").value));
 
     newFood.setNutrients(selectedFood.querySelectorAll('p')[0].innerText, selectedFood.querySelectorAll('p')[1].innerText, selectedFood.querySelectorAll('p')[2].innerText, selectedFood.querySelectorAll('p')[3].innerText, selectedFood.querySelectorAll('p')[4].innerText, 100);
     currentTable.addFoodItemToTable(newFood);

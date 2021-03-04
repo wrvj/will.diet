@@ -10,7 +10,7 @@
     --dark-gray: #1d1d1d;
     --dark-gray-translucent: rgba(29, 29, 29, 0.97);
     --light-gray: #d6d6d6;
-    --main-blue: #39C5E7;
+    --main-blue: #39c5e7;
     --cold-white: #ecfbff;
     /* Main page padding */
     --page-main-padding: 1rem;
@@ -71,7 +71,7 @@ body {
     background-image: url("../img/background_3.jpg");
     background-size: cover;
     background-position-x: center;
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
 }
 
 
@@ -79,7 +79,7 @@ body {
 
 header {
     --header-gradient-oppacity: 0.85;
-    background-image: conic-gradient(from 180deg, rgba(69, 210, 241, var(--header-gradient-oppacity)), rgba(51, 20, 124, var(--header-gradient-oppacity)), rgba(250, 31, 44, var(--header-gradient-oppacity)));
+    background-image: conic-gradient( from 180deg, rgba(69, 210, 241, var(--header-gradient-oppacity)), rgba(51, 20, 124, var(--header-gradient-oppacity)), rgba(250, 31, 44, var(--header-gradient-oppacity)));
     /* background:  conic-gradient(from 180deg, #20B1D1, #462496, #FF000F); */
     backdrop-filter: blur(6px);
     margin-bottom: 10px;
@@ -125,7 +125,7 @@ header .stats-container {
 .stats-container .stats-title {
     font-size: small;
     font-weight: 200;
-    opacity: .8;
+    opacity: 0.8;
 }
 
 .stats-container .stats-kcal {
@@ -146,7 +146,7 @@ header .stats-container {
     margin-top: -130px;
     text-align: center;
     background: white;
-    color: #FF3B5C;
+    color: #ff3b5c;
     border-radius: 40rem;
     font-size: large;
     font-weight: 500;
@@ -176,7 +176,7 @@ button.new-day {
     border-radius: 50%;
     border: none;
     background: white;
-    color: #20B1D1;
+    color: #20b1d1;
     font-size: 3rem;
     font-weight: 700;
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
@@ -191,7 +191,8 @@ main {
 
 .daily-plan-title {
     width: 100%;
-    padding: 1rem 0;
+    min-height: 1.5rem;
+    padding: 0.5rem;
     color: var(--light-gray);
     font-size: var(--table-font-size);
     font-weight: var(--table-font-weight);
@@ -200,38 +201,28 @@ main {
 .food-table-container {
     max-width: 800px;
     margin: auto;
+    margin-top: 3rem;
     background-color: var(--dark-gray-translucent);
     backdrop-filter: blur(6px);
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.5);
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     font-size: var(--table-font-size);
     font-weight: var(--table-font-weight);
     /* overflow: hidden; */
     border: 1px solid var(--medium-gray);
 }
 
-.add-new-food-btn {
-    color: var(--main-blue);
-    padding: 1rem;
-    text-align: center;
-}
-
-.add-new-food-btn:hover {
-    --new-food-btn-gradient-oppacity: 0.2;
-    background-image: linear-gradient(to right, rgba(69, 210, 241, var(--new-food-btn-gradient-oppacity)), rgba(51, 20, 124, var(--new-food-btn-gradient-oppacity)), rgba(250, 31, 44, var(--new-food-btn-gradient-oppacity)));
-    cursor: pointer;
-}
-
 .add-item-dialog {
     height: auto;
     width: 100%;
     display: grid;
-    grid-template-columns: 4fr 2fr 2fr;
+    grid-template-columns: 4fr 1fr 0.6fr 0.8fr;
+    grid-gap: .1rem;
     background-color: var(--dark-gray);
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-size: 16px;
     overflow: hidden;
-    transition: padding, max-height .1s ease-in;
+    transition: padding, max-height 0.1s ease-in;
     max-height: 100px;
 }
 
@@ -247,21 +238,84 @@ main {
     font-family: inherit;
     font-size: inherit;
     width: 100%;
-    padding: .5rem;
+    padding: 0.5rem;
     background-color: var(--dark-gray);
     color: var(--cold-white);
 }
 
 .add-item-dialog input {
+    outline: none;
     font-family: inherit;
     font-size: inherit;
     color: var(--cold-white);
     background-color: rgba(0, 0, 0, 0.15);
     width: 100%;
     height: 100%;
-    padding: .5rem;
+    padding: 0.5rem;
     border: none;
-    border-right: 1.5px solid var(--medium-gray);
+    /* border-right: 1.5px solid var(--medium-gray); */
+}
+
+#portionInput,
+#timeInput {
+    position: relative;
+}
+
+#portionInput::after,
+#timeInput::after,
+.loading-icon {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 5px;
+    width: 2rem;
+    height: 100%;
+    filter: var(--filter-icons-table);
+    opacity: 0.5;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+}
+
+.rotate {
+    animation: rotation 1s infinite linear;
+}
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(359deg);
+    }
+}
+
+#portionInput::after {
+    background-image: url(../img/scale_icon_1.svg);
+}
+
+#timeInput::after {
+    background-image: url(../img/clock_icon_1.svg);
+}
+
+.add-new-food-btn {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.15);
+    border: none;
+    color: var(--main-blue);
+    text-align: center;
+}
+
+.add-new-food-btn:hover,
+.add-new-food-btn:focus {
+    outline: none;
+    --new-food-btn-gradient-oppacity: 0.2;
+    background-color: rgba(69, 210, 241, var(--new-food-btn-gradient-oppacity));
+    cursor: pointer;
 }
 
 
@@ -276,6 +330,17 @@ main {
     outline: none;
 }
 
+.loading-icon {
+    opacity: 0;
+    transform-origin: 50% 50%;
+    background-image: url(../img/reload_icon_1.svg);
+    transition: opacity 0.4s ease;
+}
+
+.loading-icon.show {
+    opacity: 1;
+}
+
 .sugestions-container {
     position: fixed;
     background: var(--dark-gray);
@@ -288,7 +353,7 @@ main {
 }
 
 .sugestions-container::before {
-    content: '';
+    content: "";
     position: fixed;
     width: 100%;
     height: 1px;
@@ -314,8 +379,8 @@ main {
     align-items: center;
     font-size: 1rem;
     font-weight: 400;
-    padding: .5rem;
-    margin-right: .4rem;
+    padding: 0.5rem;
+    margin-right: 0.4rem;
     color: var(--light-gray);
     min-width: fit-content;
 }
@@ -323,13 +388,13 @@ main {
 .sugestion-list-item .item-description {
     display: flex;
     align-items: center;
-    font-size: .8rem;
+    font-size: 0.8rem;
     font-weight: 400;
     color: rgb(116, 116, 116);
 }
 
 .sugestion-list-item.focused {
-    background: rgba(0, 0, 0, 0.2)
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .sugestion-item-icons-container {
@@ -342,7 +407,7 @@ main {
 .sugestion-item-icons-container p {
     text-align: left;
     margin-left: 7px;
-    font-size: .8rem;
+    font-size: 0.8rem;
     width: 35px;
     color: black;
     filter: var(--filter-icons-table);
@@ -398,32 +463,6 @@ div::-webkit-scrollbar-thumb {
 
 
 /* End of custom input */
-
-.input-with-icon {
-    background-color: var(--dark-gray);
-    display: flex;
-    align-items: center;
-}
-
-.input-icon {
-    display: inline-block;
-    filter: var(--filter-icons-table);
-    width: 15px;
-    height: 15px;
-    padding: 20px;
-    background-size: 20px;
-    background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
-}
-
-.input-icon.weight-icon {
-    background-image: url(../img/scale_icon_1.svg);
-}
-
-.input-icon.time-icon {
-    background-image: url(../img/clock_icon_1.svg);
-}
 
 table {
     color: var(--table-font-color);

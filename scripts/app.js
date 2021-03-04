@@ -1,5 +1,6 @@
 function searchFunction(searchQuery, custom_input) {
     console.log("searching for foods: " + searchQuery);
+    document.querySelectorAll('.loading-icon')[0].classList.add('show');
     const template = document.querySelector("#listItemTemplate");
     loadFoodSugestions(searchQuery, 100, custom_input, template);
 }

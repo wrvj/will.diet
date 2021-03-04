@@ -58,34 +58,33 @@
     </header>
 
     <main>
-        <p class="daily-plan-title">Daily plan for Feb 10, 2021</p>
+
+
         <div class="food-table-container">
-            <p id="addNewItemDialog" class="add-new-food-btn">+ Add new item</p>
+            <p class="daily-plan-title">Daily plan for Feb 10, 2021</p>
+            <!-- <p id="addNewItemDialog" class="add-new-food-btn">+ Add new item</p> -->
             <div class="food-table-new-item">
-                <div id="addItemDialog" class="add-item-dialog add-item-dialog-collapsed">
+                <div id="addItemDialog" class="add-item-dialog">
                     <!-- <select name="" id="newFoodSelect"></select> -->
                     <div class="custom-input-container">
-                        <input id="customInput" name="customInput" type="text" placeholder="Search for food" />
+                        <span class="loading-icon rotate"></span>
+                        <input id="customInput" name="customInput" type="text" placeholder="Add new food" />
                         <div id="sugestionsContainer" class="sugestions-container">
                             <div class="list-item" style="display: none">Item 1</div>
                         </div>
                     </div>
 
-                    <div class="input-with-icon">
-                        <input id="weightInput" type="text" placeholder="Weight" />
-                        <div class="input-icon weight-icon"></div>
-                    </div>
-                    <div class="input-with-icon">
-                        <input id="hourInput" type="text" placeholder="Time" />
-                        <div class="input-icon time-icon"></div>
-                    </div>
-                </div>
-            </div>
-            <p id="addItemToTableBtn" class="add-new-food-btn">Confirm</p>
+                    <span id="portionInput"><input  maxlength="4" type="text" placeholder="0g" /></span>
+                    <span id="timeInput"><input  maxlength="2" type="text" placeholder="12h" /></span>
 
+                    <button id="addItemToTableBtn" class="add-new-food-btn">Add</button>
+                </div>
+
+            </div>
             <table>
                 <tbody></tbody>
             </table>
+            <p class="daily-plan-title"></p>
         </div>
     </main>
 
@@ -94,7 +93,7 @@
         <p>All rights reserved, 2020.</p>
     </footer>
 
-    <script src="./CustomInputSearch.js"></script>
+    <script src="./scripts/CustomInputSearch.js"></script>
     <script src="./scripts/data.js"></script>
     <script src="./scripts/app.js"></script>
     <script src="./scripts/ui.js"></script>
@@ -133,7 +132,15 @@
       <div class="sugestion-list-item">
         <div style="display: flex">
           <div class="item-name"></div>
-          <span style="display: flex; align-items: center; margin-right: .4rem; color: grey;">| </span>
+          <span
+            style="
+              display: flex;
+              align-items: center;
+              margin-right: 0.4rem;
+              color: grey;
+            "
+            >|
+          </span>
           <div class="item-description"></div>
         </div>
 
