@@ -43,7 +43,7 @@
         </div>
         <div class="calendar">
             <div>
-                <div class="date">
+                <div id="date">
                     <div>
                         <p>feb</p>
                         <p>10</p>
@@ -58,14 +58,16 @@
     </header>
 
     <main>
-
-
+        <button onclick="gotoNextDay()">Next Day</button>
+        <button onclick="gotoLastDay()">Last day</button>
         <div class="food-table-container">
-            <p class="daily-plan-title">Daily plan for Feb 10, 2021</p>
-            <!-- <p id="addNewItemDialog" class="add-new-food-btn">+ Add new item</p> -->
+            <div class="food-table-container-header">
+                <p class="daily-plan-title">Daily plan for Feb 10, 2021</p>
+                <a class="create-custom-food-button" href="#">Didn't find your food? Create a custom one!</a>
+            </div>
+
             <div class="food-table-new-item">
                 <div id="addItemDialog" class="add-item-dialog">
-                    <!-- <select name="" id="newFoodSelect"></select> -->
                     <div class="custom-input-container">
                         <span class="loading-icon rotate"></span>
                         <input id="customInput" name="customInput" type="text" placeholder="Add new food" />
@@ -74,12 +76,13 @@
                         </div>
                     </div>
 
-                    <span id="portionInput"><input  maxlength="4" type="text" placeholder="0g" /></span>
-                    <span id="timeInput"><input  maxlength="2" type="text" placeholder="12h" /></span>
+                    <span id="portionInput"><input maxlength="4" type="text" placeholder="0g"
+            /></span>
+                    <span id="timeInput"><input maxlength="2" type="text" placeholder="12h"
+            /></span>
 
                     <button id="addItemToTableBtn" class="add-new-food-btn">Add</button>
                 </div>
-
             </div>
             <table>
                 <tbody></tbody>
@@ -121,9 +124,14 @@
           <p class="table-item-weight">50g</p>
         </td>
         <td>
-          <div class="checkbox-container">
-            <span class="icon icon-check"></span>
-          </div>
+          <button class="toggle-eaten-button" onclick="toggleFoodEaten(event)">
+            <span class="toggle-eaten-button-icon"></span>
+          </button>
+        </td>
+        <td>
+          <button class="delete-button" onclick="deleteItemFromTable(event)">
+            <span class="delete-button-icon"></span>
+          </button>
         </td>
       </tr>
     </template>

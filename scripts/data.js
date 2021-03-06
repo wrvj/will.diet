@@ -17,6 +17,7 @@ class FoodItem {
     constructor(name, description, portion, hour) {
         this.foodItemId = FoodItem.incrementId();
         this.name = name;
+        this.description = description;
         this.portion = portion;
         this.hour = hour;
         this.status = "planned";
@@ -26,6 +27,19 @@ class FoodItem {
         this.fibers = 0;
         this.calories = 0;
 
+        this.cloneItem = function(newItem) {
+            this.foodItemId = newItem.foodItemId;
+            this.name = newItem.name;
+            this.description = newItem.description;
+            this.portion = newItem.portion;
+            this.hour = newItem.hour;
+            this.status = newItem.status;
+            this.proteins = newItem.proteins;
+            this.carbs = newItem.carbs;
+            this.fats = newItem.fats;
+            this.fibers = newItem.fibers;
+            this.calories = newItem.calories;
+        }
         this.setHour = function(newHour) {
             if (!isNaN(newHour))
                 this.hour = newHour;
@@ -82,14 +96,33 @@ class FoodTable {
         this.tableOrder = {};
         this.tableTotalNutrients = { proteins: 0, carbs: 0, fats: 0, fibers: 0, calories: 0 };
 
+        this.recreateFoodItems = function() {
+            for (let i = 0; i < this.foodItems.length; i++) {
+                let tempFoodItem = new FoodItem("name", "description", 0, 0);
+                tempFoodItem.cloneItem(this.foodItems[i]);
+                this.foodItems[i] = tempFoodItem;
+            }
+        }
+
         this.addFoodItem = function(foodItem) {
             this.foodItems.push(foodItem);
             this.tableOrder[this.foodQtd] = foodItem.foodItemId++;
         }
         this.removeFoodItem = function(idToRemove) {
             for (let i in this.foodItems) {
-                if (this.foodItems[i].foodItemId = idToRemove) {
+                if (this.foodItems[i].foodItemId == idToRemove) {
                     this.foodItems.splice(i, 1);
+                    this.populateHtmlTable();
+                    updateStats();
+                }
+            }
+        }
+        this.toggleFoodStatusById = function(foodId) {
+
+            for (let i in this.foodItems) {
+                if (this.foodItems[i].foodItemId == foodId) {
+                    this.foodItems[i].toggleStatus();
+                    updateStats();
                 }
             }
         }
@@ -128,15 +161,58 @@ class FoodTable {
                 clone.querySelectorAll(".table-item-hour")[0].textContent = f.hour + "h";
                 clone.querySelectorAll(".table-item-name")[0].textContent = f.name;
                 clone.querySelectorAll(".table-item-weight")[0].textContent = f.portion + "g";
-
+                clone.querySelectorAll(".delete-button")[0].value = f.foodItemId;
+                clone.querySelectorAll(".toggle-eaten-button")[0].value = f.foodItemId;
+                console.log(f.status);
+                clone.querySelector('.toggle-eaten-button-icon').classList.remove('eaten');
+                clone.querySelector('.toggle-eaten-button-icon').classList.add(f.status);
                 tableElement.appendChild(clone.cloneNode(true));
             }
         }
     }
 }
 
-class Day {
-    constructor(dailyPlanTable) {
-        this.dailyPlanTable = dailyPlanTable;
+class DaysHistory {
+    constructor() {
+        this.dailyPlans = [];
+        console.log("new daily plan created");
+
+        this.setDailyPlans = function(newDailyPlans) {
+            this.dailyPlans = newDailyPlans;
+            console.log(this.dailyPlans, this.dailyPlans.length);
+        }
+        this.getDailyPlans = function() {
+            return this.dailyPlans;
+        }
+        this.getCurrentDayTable = function() {
+            return this.dailyPlans[this.dailyPlans.length - 1];
+        }
+        this.addNewDay = function() {
+            this.dailyPlans.push(new FoodTable(new Date().toLocaleDateString("en-US")));
+        }
+        this.updateDayTable = function(dayTable) {
+            for (let i = 0; i < this.dailyPlans.length; i++) {
+                if (this.dailyPlans[i].planDate == dayTable.planDate) {
+                    this.dailyPlans[i] = dayTable;
+                    break;
+                }
+            }
+        }
+        this.setCurrentDay = function(date) {
+            const newTable = new FoodTable(date);
+            for (let t of this.dailyPlans) {
+                if (t.planDate == date) {
+                    newTable.foodQtd = t.foodQtd;
+                    newTable.foodItems = t.foodItems;
+                    newTable.tableOrder = t.tableOrder;
+                    newTable.tableTotalNutrients = t.tableTotalNutrients;
+                    newTable.recreateFoodItems();
+                    newTable.populateHtmlTable();
+                    return newTable;
+                }
+            }
+            this.dailyPlans.push(newTable);
+            return newTable;
+        }
     }
 }
